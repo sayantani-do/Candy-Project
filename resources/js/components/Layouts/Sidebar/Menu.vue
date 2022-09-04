@@ -1,7 +1,7 @@
 <template>
-    <li class="row text-center mt-2">
+    <li class="nav-item text-center overflow-hidden mt-2">
         <!-- <span class="h4">{{menu.name}}</span> -->
-        <router-link :to="{path: menu.path}" exact-active-class="active" ><span class="h5">{{menu.name}}</span></router-link>
+        <router-link :to="{path: menu.path}" exact-active-class="active" class="row sidebar-link"><span class="h5">{{menu.name}}</span></router-link>
     </li>
 </template>
 

@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
-use Symfony\Component\HttpFoundation\Response;
 
-class CandyRequest extends FormRequest
+class CartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,9 @@ class CandyRequest extends FormRequest
      */
     public function rules()
     {
-        // dd(request()->all());
         return [
-            'name' => 'nullable|string',
-            'details' => 'nullable|string'
+            'candy_id' => 'required',
+            'quantity' => 'required'
         ];
     }
 

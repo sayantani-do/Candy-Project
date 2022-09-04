@@ -1,7 +1,7 @@
 <template>
     <wrapper class="d-flex h-100">
       <Sidebar />
-      <div id="content" class="w-100">
+      <div id="content" class="overflow-hidden w-100">
         <Header />
         <div class="container px-5 mt-5">
           <router-view></router-view>

@@ -1,12 +1,7 @@
 <template>
-    <div class="header-nav bg-primary container">
-        <div class="container d-flex justify-content-between">
-            <!-- <div>
-                <img src="https://cdn.clipartsfree.net/vector/medium/17906-candy-icon-art-design.png" style="width: 50px;" />
-            </div> -->
-            <!-- <div>
-                Logout
-            </div> -->
+    <div class="header-nav bg-primary container px-5">
+        <div class="h-100 d-table float-end">
+            <router-link :to="{name: 'cart.index'}" class="text-white text-decoration-none d-table-cell align-middle">My Cart</router-link>
         </div>
     </div>
 </template>

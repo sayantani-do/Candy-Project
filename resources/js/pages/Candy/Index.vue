@@ -21,7 +21,9 @@
                             <td>{{candy.name}}</td>
                             <td>{{candy.details}}</td>
                             <td>
-                                <button type="button" class="btn btn-info" @click="deleteCandy(candy.id)" >Delete</button>
+                                <button type="button" class="btn btn-info" v-if="candy.in_cart == 0" @click="addToCart(candy.id)" >Add To Cart</button>
+                                <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" class="btn btn-primary mx-1" >Edit</router-link>
+                                <button type="button" class="btn btn-danger" @click="deleteCandy(candy.id)" >Delete</button>
                             </td>
                         </tr>
                     </tbody>
@@ -34,6 +36,7 @@
 <script>
     import { onMounted } from '@vue/runtime-core';
     import useCandies from '../../composables/candies';
+    import useCart from '../../composables/cart';
     import SubHeader from '../../components/Layouts/SubHeader.vue';
     import Swal from 'sweetalert2/dist/sweetalert2.js';
     import common from '../../common';
@@ -44,9 +47,23 @@
             SubHeader
         },
         setup () {
-            const { candies, getCandy, destroyCandy } = useCandies();
+            const { candies, getCandies, destroyCandy } = useCandies();
+            const { getItems, addCart } = useCart();
 
-            onMounted(getCandy);
+            onMounted(getCandies);
+
+            const onMountcallFun = () => {
+                getItems, getCandies
+            }
+
+            const addToCart = async(id) => {
+                // console.log(id);
+                var data = {
+                    'candy_id': id,
+                    'quantity': 1
+                }
+                await addCart(data);
+            }
 
             const deleteCandy = async(id) => {
                 await Swal.fire({
@@ -59,14 +76,14 @@
                 }).then(async(confirmed) => {
                     if (confirmed.value) {
                         await destroyCandy(id);
-                        await getCandy();
+                        await getCandies();
                     }
-                });
-                
+                });                
             }
 
             return {
                 candies,
+                addToCart,
                 deleteCandy
             }
         }

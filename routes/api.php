@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Candy\CandyController;
+use App\Http\Controllers\Cart\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::apiResource('candies', CandyController::class);
+Route::apiResource('cart', CartController::class);
+Route::get('cart/add-quantity/{cart}', [CartController::class, 'addQuantity'])->name('cart.add.quantity');
+Route::get('cart/reduce-quantity/{cart}', [CartController::class, 'reduceQuantity'])->name('cart.reduce.quantity');
 
-Route::middleware('auth:api')->group(function(){
-});
+
+
+// Route::middleware('auth:api')->group(function(){
+// });

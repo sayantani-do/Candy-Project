@@ -2,7 +2,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import CandyIndex from '../pages/Candy/Index';
 import CandyCreate from '../pages/Candy/Create';
+import CandyEdit from '../pages/Candy/Edit';
 import App from '../components/Layouts/App.vue';
+import CartIndex from '../pages/Cart/Index';
+
 
 const routes = [
     {
@@ -14,6 +17,17 @@ const routes = [
         path: '/candies/add',
         name: 'candies.create',
         component: CandyCreate
+    },
+    {
+        path: '/candies/:id/edit',
+        name: 'candies.edit',
+        component: CandyEdit,
+        props: true
+    },
+    {
+        path: '/cart',
+        name: 'cart.index',
+        component: CartIndex
     },
     {
         path: "/",

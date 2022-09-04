@@ -19,4 +19,9 @@ class Candy extends Model
         'name', 'details'
     ];
 
+    public function inCart($id):int {
+        $item = Cart::where('candy_id', $id)->first();
+        return @$item ? 1 : 0;
+    }
+
 }
