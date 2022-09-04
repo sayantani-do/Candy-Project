@@ -49,7 +49,7 @@ class CartController extends Controller
             $item = Cart::create($ins);
 
             $response['status'] = 'success';
-            $response['message'] = 'Item added succesfully.';
+            $response['message'] = 'Item added to cart.';
             $response['data'] = $item;
         } catch (Exception $e) {
             $response['status'] = 'error';

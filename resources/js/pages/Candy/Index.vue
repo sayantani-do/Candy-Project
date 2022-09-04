@@ -11,6 +11,8 @@
                         <tr >
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Sku</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Details</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -19,7 +21,9 @@
                         <tr v-for="(candy, i) in candies" :key="i+1">
                             <th scope="row">{{i+1}}</th>
                             <td>{{candy.name}}</td>
-                            <td>{{candy.details}}</td>
+                            <td>{{candy.sku}}</td>
+                            <td>${{candy.price}}</td>
+                            <td>{{candy.details.substring(0,27)+'...'}}</td>
                             <td>
                                 <button type="button" class="btn btn-info" v-if="candy.in_cart == 0" @click="addToCart(candy.id)" >Add To Cart</button>
                                 <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" class="btn btn-primary mx-1" >Edit</router-link>
@@ -48,13 +52,14 @@
         },
         setup () {
             const { candies, getCandies, destroyCandy } = useCandies();
-            const { getItems, addCart } = useCart();
+            const { items, getItems, addCart } = useCart();
 
             onMounted(getCandies);
 
-            const onMountcallFun = () => {
-                getItems, getCandies
-            }
+            // const onMountcallFun = () => {
+            //     getItems();
+            //     getCandies();
+            // }
 
             const addToCart = async(id) => {
                 // console.log(id);
@@ -63,6 +68,7 @@
                     'quantity': 1
                 }
                 await addCart(data);
+                await getCandies();
             }
 
             const deleteCandy = async(id) => {
@@ -82,6 +88,7 @@
             }
 
             return {
+                items,
                 candies,
                 addToCart,
                 deleteCandy

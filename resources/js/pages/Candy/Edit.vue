@@ -2,13 +2,23 @@
     <div>
         <SubHeader title="Edit Candy" />
         <Form @submit="editCandy" class="form">
-            <div class="form-group mt-3">
-                <label for="name">Name</label>
-                <Field type="text" name="name" class="form-control" :class="{'is-invalid': !!errors.length }" :rules="required" v-model="candy.name" />
-                <!-- <Field type="text" name="name" :rules="required" v-slot="{ field, errors }">
-                    <input v-bind="field" type="text" class="form-control" :class="{'is-invalid': !!errors.length }" v-model="candy.name" />
-                </Field> -->
-                <ErrorMessage name="name" />
+            <div class="form-group row mt-3">
+                <div class="col-md-6">
+                    <label for="name">Name</label>
+                    <Field type="text" name="name" class="form-control" :class="{'is-invalid': !!errors.length }" :rules="required" v-model="candy.name" />
+                    <!-- <Field type="text" name="name" :rules="required" v-slot="{ field, errors }">
+                        <input v-bind="field" type="text" class="form-control" :class="{'is-invalid': !!errors.length }" v-model="candy.name" />
+                    </Field> -->
+                    <ErrorMessage name="name" />
+                </div>
+                <div class="col-md-6">
+                    <label for="price">Price</label>
+                    <Field type="text" name="price" class="form-control" :class="{'is-invalid': !!errors.length }" :rules="required" v-model="candy.price" />
+                    <!-- <Field type="text" name="price" :rules="required" v-slot="{ field, errors }">
+                        <input v-bind="field" type="text" class="form-control" :class="{'is-invalid': !!errors.length }" v-model="candy.price" />
+                    </Field> -->
+                    <ErrorMessage name="price" />
+                </div>
             </div>
             <div class="form-group mt-3">
                 <label for="details">Details</label>

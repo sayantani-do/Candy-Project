@@ -18,6 +18,8 @@ class CreateCandiesTable extends Migration
             $table->id();
             $table->uuid('uuid')->default(DB::raw('(UUID())'));
             $table->string('name')->nullable();
+            $table->string('sku')->nullable()->unique();
+            $table->decimal('price', 11,2)->default(0.00);
             $table->text('details')->nullable();
             $table->softDeletes();
             $table->timestamps();

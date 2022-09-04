@@ -18,6 +18,8 @@ class CandyResource extends JsonResource
         return [
             'id' => $this->uuid,
             'name' => $this->name,
+            'sku' => $this->sku,
+            'price' => $this->price,
             'details' => $this->details,
             'in_cart' => $this->inCart($this->id)
         ];

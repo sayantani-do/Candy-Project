@@ -21,14 +21,6 @@ export default function useCart(){
                     text: res.data.message,
                     type: "success"
                 });
-                // var index = items.value.findIndex(item => {
-                //     return item.candy_id === data.candy_id;
-                // });
-                // console.log("Cart: ");
-                // console.log(items);
-                // console.log("Data Id: "+data.candy_id)
-                // console.group(index);
-                // items.value[index].in_cart = 1;
             });
         } catch (error) {
             if(error.response.status === 422){

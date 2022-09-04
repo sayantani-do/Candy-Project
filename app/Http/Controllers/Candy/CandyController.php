@@ -20,7 +20,7 @@ class CandyController extends Controller
     public function index()
     {
         try {
-            $candies = CandyResource::collection(Candy::all());
+            $candies = CandyResource::collection(Candy::orderBy('id', 'desc')->get());
             $response['status'] = 'success';
             $response['message'] = 'Data fetched succesfully';
             $response['data'] = $candies;
@@ -41,10 +41,16 @@ class CandyController extends Controller
     {
         try {
             // dd($request->all());
-            $candy = Candy::create($request->all());
+            $ins = $request->passedValidation();
+            $randnum    = rand(1111,9999);
+            $curdate    = date('Ymd');
+            $ins['sku'] = 'SKU-'.$randnum.'-'.$curdate;
+            $ins['price'] = (float)$ins['price'];
+
+            $candy = Candy::create($ins);
             $response['status'] = 'success';
             $response['message'] = 'Candy created succesfully.';
-            $response['data'] = $candy;
+            $response['data'] = CandyResource::make($candy);;
         } catch (Exception $e) {
             $response['status'] = 'error';
             $response['message'] = $e->getMessage();
@@ -82,7 +88,7 @@ class CandyController extends Controller
     public function update(CandyRequest $request, Candy $candy)
     {
         try {
-            $candy->update($request->all());
+            $candy->update($request->passedValidation());
             $response['status'] = 'success';
             $response['message'] = 'Candy updated succesfully.';
             $response['data'] = $candy;

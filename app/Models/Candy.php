@@ -16,7 +16,7 @@ class Candy extends Model
     }
 
     protected $fillable = [
-        'name', 'details'
+        'name', 'sku', 'price', 'details'
     ];
 
     public function inCart($id):int {

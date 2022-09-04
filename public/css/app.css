@@ -625,7 +625,7 @@ progress {
   color: #6c757d;
 }
 
-.container,
+.container, .header-nav,
 .container-fluid,
 .container-xxl,
 .container-xl,
@@ -642,27 +642,27 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .container-sm, .container {
+  .container-sm, .container, .header-nav {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .container-md, .container-sm, .container {
+  .container-md, .container-sm, .container, .header-nav {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .container-lg, .container-md, .container-sm, .container {
+  .container-lg, .container-md, .container-sm, .container, .header-nav {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xl, .container-lg, .container-md, .container-sm, .container, .header-nav {
     max-width: 1140px;
   }
 }
 @media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container, .header-nav {
     max-width: 1320px;
   }
 }
@@ -3779,7 +3779,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
-.navbar > .container,
+.navbar > .container, .navbar > .header-nav,
 .navbar > .container-fluid,
 .navbar > .container-sm,
 .navbar > .container-md,
@@ -7141,7 +7141,7 @@ textarea.form-control-lg {
   position: absolute !important;
 }
 
-.position-fixed {
+.position-fixed, .header-nav {
   position: fixed !important;
 }
 
@@ -7830,7 +7830,7 @@ textarea.form-control-lg {
   padding-left: 1.5rem !important;
 }
 
-.px-5 {
+.px-5, .header-nav {
   padding-right: 3rem !important;
   padding-left: 3rem !important;
 }
@@ -8203,7 +8203,7 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
 }
 
-.bg-primary, .sidebar-link:hover, .sidebar-link.active {
+.bg-primary, .sidebar-link:hover, .sidebar-link.active, .header-nav {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -10923,6 +10923,10 @@ textarea.form-control-lg {
 }
 .logo > img {
   width: 100%;
+}
+
+.header-nav {
+  z-index: 99999;
 }
 
 #sidebar {

@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import CandyIndex from '../pages/Candy/Index';
 import CandyCreate from '../pages/Candy/Create';
 import CandyEdit from '../pages/Candy/Edit';
-import App from '../components/Layouts/App.vue';
+import Welcome from '../components/Layouts/Welcome.vue';
 import CartIndex from '../pages/Cart/Index';
 
 
@@ -32,7 +32,7 @@ const routes = [
     {
         path: "/",
         name: "app",
-        component: App
+        component: Welcome
     },
 ];
 

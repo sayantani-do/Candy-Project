@@ -28,8 +28,9 @@ class CandyRequest extends FormRequest
     {
         // dd(request()->all());
         return [
-            'name' => 'nullable|string',
-            'details' => 'nullable|string'
+            'name' => 'required',
+            'price' => 'required',
+            'details' => 'required'
         ];
     }
 

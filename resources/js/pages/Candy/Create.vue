@@ -2,14 +2,22 @@
     <div>
         <SubHeader title="Add Candy" />
         <Form @submit="saveCandy" class="form">
-            <div class="form-group mt-3">
-                <label for="name">Name</label>
-                <Field type="text" name="name" class="form-control" :rules="required" v-model="form.name" />
-                <ErrorMessage name="name" />
+            <div class="form-group row mt-3">
+                <div class="col-md-6">
+                    <label for="name">Name</label>
+                    <Field type="text" name="name" class="form-control" :rules="required" v-model="form.name" />
+                    <ErrorMessage name="name" />
+                </div>
+                <div class="col-md-6">
+                    <label for="price">Price</label>
+                    <Field type="text" name="price" class="form-control" :rules="required" v-model="form.price" />
+                    <ErrorMessage name="price" />
+                </div>
             </div>
             <div class="form-group mt-3">
                 <label for="details">Details</label>
-                <Field type="text" name="details" class="form-control" :rules="required" v-model="form.details" />
+                <!-- <Field type="text" name="details" class="form-control" :rules="required" v-model="form.details" /> -->
+                <Field type="text" as="textarea" :rows="8" name="details" class="form-control" :rules="required" v-model="form.details" />
                 <ErrorMessage name="details" />
             </div>
             <div class="form-group mt-3 float-end">
@@ -32,6 +40,7 @@
 
             const form = reactive({
                 name: '',
+                price: '0.00',
                 details: '',
             });
 

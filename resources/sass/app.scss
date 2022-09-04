@@ -26,6 +26,13 @@
         width: 100%;
     }
 }
+.header-nav{
+    @extend .bg-primary;
+    @extend .container;
+    @extend .px-5;
+    @extend .position-fixed;
+    z-index: 99999;
+}
 
 @import 'sidebar';
 
