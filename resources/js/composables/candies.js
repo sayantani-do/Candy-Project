@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import common from '../common';
 
 export default function useCandies(){
 
@@ -12,12 +14,20 @@ export default function useCandies(){
     const getCandies = async() => {
         let res = await axios.get('/api/candies');
         candies.value = res.data.data;
-        console.log(candies.value);
+        // console.log(candies.value);
     }
 
     const storeCandy = async(data) => {
         try {
             await axios.post('/api/candies/', data)
+            .then( res => {
+                Swal.fire({
+                    title: "Success",
+                    text: res.data.message,
+                    type: "success",
+                    confirmButtonColor: common.primary
+                });
+            })
             await router.push({name: 'candies.index'})
         } catch (error) {
             if(error.response.status === 422){
@@ -35,6 +45,14 @@ export default function useCandies(){
         try {
             // console.log(candy);
             await axios.put('/api/candies/'+id, candy.value)
+            .then( res => {
+                Swal.fire({
+                    title: "Success",
+                    text: res.data.message,
+                    type: "success",
+                    confirmButtonColor: common.primary
+                });
+            })
             await router.push({name: 'candies.index'})
         } catch (error) {
             if(error.response.status === 422){

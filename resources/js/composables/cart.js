@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import common from '../common';
 
 export default function useCart(){
 
@@ -9,23 +10,27 @@ export default function useCart(){
     const getItems = async() => {
         let res = await axios.get('/api/cart');
         items.value = res.data.data;
-        console.log(items.value);
+        // console.log(items.value);
     }
     
     const addCart = async(data) => {
         try {
+            processing.value == true;
             await axios.post('/api/cart/', data)
             .then( res => {
                 Swal.fire({
                     title: "Success",
                     text: res.data.message,
-                    type: "success"
+                    type: "success",
+                    confirmButtonColor: common.primary
                 });
+                processing.value == false;
             });
         } catch (error) {
             if(error.response.status === 422){
                 errors.value = error.response.data;
             }
+            processing.value == false;
         }
     }
 

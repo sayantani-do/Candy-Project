@@ -25,9 +25,9 @@
                             <td>${{candy.price}}</td>
                             <td>{{candy.details.substring(0,27)+'...'}}</td>
                             <td>
-                                <button type="button" class="btn btn-info" v-if="candy.in_cart == 0" @click="addToCart(candy.id)" >Add To Cart</button>
+                                <button type="button" class="btn btn-success" v-if="candy.in_cart == 0" @click="addToCart(candy.id)" >Add To Cart</button>
                                 <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" class="btn btn-primary mx-1" >Edit</router-link>
-                                <button type="button" class="btn btn-danger" @click="deleteCandy(candy.id)" >Delete</button>
+                                <button type="button" class="btn btn-info" @click="deleteCandy(candy.id)" >Delete</button>
                             </td>
                         </tr>
                     </tbody>
@@ -52,7 +52,7 @@
         },
         setup () {
             const { candies, getCandies, destroyCandy } = useCandies();
-            const { items, getItems, addCart } = useCart();
+            const { items, getItems, addCart, processing } = useCart();
 
             onMounted(getCandies);
 
@@ -62,13 +62,18 @@
             // }
 
             const addToCart = async(id) => {
-                // console.log(id);
-                var data = {
-                    'candy_id': id,
-                    'quantity': 1
+                if(!processing.value){
+                    // console.log(processing.value);
+                    processing.value = true;
+                    var data = {
+                        'candy_id': id,
+                        'quantity': 1
+                    }
+                    await addCart(data);
+                    await getCandies();
+                    await processing.value == false;
+                    
                 }
-                await addCart(data);
-                await getCandies();
             }
 
             const deleteCandy = async(id) => {

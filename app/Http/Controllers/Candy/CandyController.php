@@ -42,9 +42,7 @@ class CandyController extends Controller
         try {
             // dd($request->all());
             $ins = $request->passedValidation();
-            $randnum    = rand(1111,9999);
-            $curdate    = date('Ymd');
-            $ins['sku'] = 'SKU-'.$randnum.'-'.$curdate;
+            $ins['sku'] = generateSKU();
             $ins['price'] = (float)$ins['price'];
 
             $candy = Candy::create($ins);

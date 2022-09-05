@@ -14,10 +14,7 @@ class CandyFactory extends Factory
     public function definition()
     {
         $name = $this->faker->text(10);
-        // $sku = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name), '-'));
-        $randnum    = rand(1111,9999);
-        $curdate    = date('Ymd');
-        $sku = 'SKU-'.$randnum.'-'.$curdate;
+        $sku = generateSKU();
         return [
             'name' => $name,
             'sku' => $sku,

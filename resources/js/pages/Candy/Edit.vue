@@ -5,27 +5,18 @@
             <div class="form-group row mt-3">
                 <div class="col-md-6">
                     <label for="name">Name</label>
-                    <Field type="text" name="name" class="form-control" :class="{'is-invalid': !!errors.length }" :rules="required" v-model="candy.name" />
-                    <!-- <Field type="text" name="name" :rules="required" v-slot="{ field, errors }">
-                        <input v-bind="field" type="text" class="form-control" :class="{'is-invalid': !!errors.length }" v-model="candy.name" />
-                    </Field> -->
+                    <Field type="text" name="name" class="form-control" :class="{'is-invalid': !!errors.length }" rules="required" v-model="candy.name" />
                     <ErrorMessage name="name" />
                 </div>
                 <div class="col-md-6">
                     <label for="price">Price</label>
-                    <Field type="text" name="price" class="form-control" :class="{'is-invalid': !!errors.length }" :rules="required" v-model="candy.price" />
-                    <!-- <Field type="text" name="price" :rules="required" v-slot="{ field, errors }">
-                        <input v-bind="field" type="text" class="form-control" :class="{'is-invalid': !!errors.length }" v-model="candy.price" />
-                    </Field> -->
+                    <Field type="number" name="price" class="form-control" :class="{'is-invalid': !!errors.length }" rules="required|notZero" v-model="candy.price" />
                     <ErrorMessage name="price" />
                 </div>
             </div>
             <div class="form-group mt-3">
                 <label for="details">Details</label>
-                <Field type="text" as="textarea" :rows="8" name="details" class="form-control" :rules="required" v-model="candy.details" />
-                <!-- <Field type="text" name="details" :rules="required" v-slot="{ field, errors }">
-                    <textarea v-bind="field" class="form-control" :class="{'is-invalid': !!errors.length }" v-model="candy.details" >{{candy.details}}</textarea>
-                </Field> -->
+                <Field type="text" as="textarea" :rows="8" name="details" class="form-control" rules="required" v-model="candy.details" />
                 <ErrorMessage name="details" />
             </div>
             <div class="form-group mt-3 float-end">
@@ -39,7 +30,7 @@
     import useCandies from '../../composables/candies';
     import SubHeader from '../../components/Layouts/SubHeader.vue';
     import { onMounted } from '@vue/runtime-core';
-    import { Form, Field, ErrorMessage } from 'vee-validate';
+    import { Form, Field, ErrorMessage, defineRule } from 'vee-validate';
 
     export default {
         name: "CandyCreate",
@@ -61,15 +52,22 @@
                 await actions.setErrors(errors.value);
             }
 
-            const required = (value) => {
-                if (!value) {
-                    return 'This field is required';
+            defineRule("required", (value) => {
+                if (!value || !value.length) {
+                    return "This field is required";
                 }
                 return true;
-            }
+            });
+
+            defineRule("notZero", (value) => {
+                if (parseFloat(value) == 0.0) {
+                    return 'Price cannot be zero';
+                }
+                return true;
+            });
 
             return {
-                errors, candy, required, editCandy
+                errors, candy, editCandy
             }
         }
     }
