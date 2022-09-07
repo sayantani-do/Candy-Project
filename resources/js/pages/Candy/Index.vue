@@ -25,9 +25,19 @@
                             <td>${{candy.price}}</td>
                             <td>{{candy.details.substring(0,27)+'...'}}</td>
                             <td>
-                                <button type="button" class="btn btn-success" v-if="candy.in_cart == 0" @click="addToCart(candy.id)" >Add To Cart</button>
-                                <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" class="btn btn-primary mx-1" >Edit</router-link>
-                                <button type="button" class="btn btn-info" @click="deleteCandy(candy.id)" >Delete</button>
+                                <span v-if="candy.in_cart == 0" title="Add To Cart" @click="addToCart(candy.id)" class="fa_icon" >
+                                    <fa icon="fa-solid fa-cart-plus" size="2x" :color="common.info" />
+                                </span>
+                                <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" title="Edit" class="mx-1 fa_icon" >
+                                    <fa icon="fa-solid fa-pen-to-square" size="2x" :color="common.info" />
+                                </router-link>
+                                <span v-if="candy.in_cart == 0" title="Delete" @click="deleteCandy(candy.id)" class="fa_icon" >
+                                    <fa icon="fa-solid fa-trash" size="2x" :color="common.info" />
+                                </span>
+
+                                <!-- <button type="button" class="btn btn-success" v-if="candy.in_cart == 0" @click="addToCart(candy.id)" >Add To Cart</button> -->
+                                <!-- <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" class="btn btn-primary mx-1" >Edit</router-link> -->
+                                <!-- <button type="button" class="btn btn-info" @click="deleteCandy(candy.id)" >Delete</button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -54,6 +64,7 @@
             const { candies, getCandies, destroyCandy } = useCandies();
             const { items, getItems, addCart, processing } = useCart();
 
+            console.log(common);
             onMounted(getCandies);
 
             // const onMountcallFun = () => {
@@ -62,18 +73,12 @@
             // }
 
             const addToCart = async(id) => {
-                if(!processing.value){
-                    // console.log(processing.value);
-                    processing.value = true;
-                    var data = {
-                        'candy_id': id,
-                        'quantity': 1
-                    }
-                    await addCart(data);
-                    await getCandies();
-                    await processing.value == false;
-                    
+                var data = {
+                    'candy_id': id,
+                    'quantity': 1
                 }
+                await addCart(data);
+                await getCandies();
             }
 
             const deleteCandy = async(id) => {
@@ -96,7 +101,8 @@
                 items,
                 candies,
                 addToCart,
-                deleteCandy
+                deleteCandy,
+                common
             }
         }
     }

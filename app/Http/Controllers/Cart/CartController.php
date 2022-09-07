@@ -46,11 +46,17 @@ class CartController extends Controller
             // dd($ins);
             $candy = Candy::where('uuid', $request->candy_id)->first();
             $ins['candy_id'] = $candy->id;
-            $item = Cart::create($ins);
+            $exists = Cart::where('candy_id', $candy->id)->first();
+            if(!@$exists) {
+                $item = Cart::create($ins);
 
-            $response['status'] = 'success';
-            $response['message'] = 'Item added to cart.';
-            $response['data'] = $item;
+                $response['status'] = 'success';
+                $response['message'] = 'Item added to cart.';
+                $response['data'] = $item;
+            } else {
+                $response['status'] = 'exists';
+                $response['message'] = 'Item already present in cart.';
+            }
         } catch (Exception $e) {
             $response['status'] = 'error';
             $response['message'] = $e->getMessage();

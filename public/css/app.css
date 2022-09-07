@@ -10929,6 +10929,24 @@ textarea.form-control-lg {
   z-index: 99999;
 }
 
+.fa_icon {
+  pointer-events: all !important;
+  cursor: pointer !important;
+}
+
+.fa-2x {
+  font-size: 1.5em !important;
+  transition: 0.3s !important;
+}
+
+.fa-cart-plus:hover, .fa-pen-to-square:hover, .fa-trash:hover {
+  color: #da1e25 !important;
+}
+
+.fa-cart-shopping:hover {
+  color: #000000;
+}
+
 #sidebar {
   height: 100%;
   min-width: 250px;

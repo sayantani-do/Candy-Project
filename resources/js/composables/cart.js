@@ -15,22 +15,22 @@ export default function useCart(){
     
     const addCart = async(data) => {
         try {
-            processing.value == true;
             await axios.post('/api/cart/', data)
             .then( res => {
-                Swal.fire({
-                    title: "Success",
-                    text: res.data.message,
-                    type: "success",
-                    confirmButtonColor: common.primary
-                });
-                processing.value == false;
+                console.log(res);
+                if(res.data.status == 'success'){
+                    Swal.fire({
+                        title: "Success",
+                        text: res.data.message,
+                        type: "success",
+                        confirmButtonColor: common.primary
+                    });
+                }
             });
         } catch (error) {
             if(error.response.status === 422){
                 errors.value = error.response.data;
             }
-            processing.value == false;
         }
     }
 
