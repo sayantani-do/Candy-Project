@@ -1,7 +1,9 @@
 <template>
     <div class="list">
         <SubHeader title="Candies">
-            <router-link class="btn btn-primary" :to="{name: 'candies.create'}">Add Candy</router-link>
+            <router-link class="btn btn-primary text-white" :to="{name: 'candies.create'}">
+                <fa icon="fa-solid fa-plus" size="1x" color="white" /> Add Candy
+            </router-link>
         </SubHeader>
         <div class="card">
             <div class="card-body">
@@ -64,14 +66,8 @@
             const { candies, getCandies, destroyCandy } = useCandies();
             const { items, getItems, addCart, processing } = useCart();
 
-            console.log(common);
             onMounted(getCandies);
-
-            // const onMountcallFun = () => {
-            //     getItems();
-            //     getCandies();
-            // }
-
+            
             const addToCart = async(id) => {
                 var data = {
                     'candy_id': id,

@@ -21,7 +21,7 @@
                 <ErrorMessage name="details" />
             </div>
             <div class="form-group mt-3 float-end">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary text-white">Save</button>
             </div>
         </Form>
     </div>

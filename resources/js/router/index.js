@@ -45,6 +45,12 @@ var router = createRouter({
 router.beforeEach((to, from, next) => {
     // document.title = `${to.meta.title} - ${process.env.MIX_APP_NAME}`;
     next();
+    const candyMenuActive = ['candies.index', 'candies.add', 'candies.edit'];
+    // console.log(to);
+
+    // if(candyMenuActive.includes(to.name)){
+
+    // }
 });
 
 export default router

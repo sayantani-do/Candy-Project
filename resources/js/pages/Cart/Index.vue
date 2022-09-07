@@ -19,7 +19,7 @@
                         <button type="button" class="btn btn-outline-primary" @click="addItem(item.id)" >+</button>
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary mx-3 float-end" @click="removeItem(item.id)" >Remove from Cart</button>
+                    <button type="button" class="btn btn-primary text-white mx-3 float-end" @click="removeItem(item.id)" >Remove from Cart</button>
                 </div>
             </div>
         </div>

@@ -23701,10 +23701,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'menuItem',
   props: {
     menu: Object
+  },
+  setup: function setup() {
+    var candyMenuActive = ['candies.index', 'candies.add', 'candies.edit'];
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_0__.useRouter)();
+    console.log(router.currentRoute.value);
   }
 });
 
@@ -23972,11 +23979,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         addCart = _useCart.addCart,
         processing = _useCart.processing;
 
-    console.log(_common__WEBPACK_IMPORTED_MODULE_4__["default"]);
-    (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.onMounted)(getCandies); // const onMountcallFun = () => {
-    //     getItems();
-    //     getCandies();
-    // }
+    (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_5__.onMounted)(getCandies);
 
     var addToCart = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
@@ -24353,9 +24356,9 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "sidebar-header mt-4 mb-3"
+  "class": "sidebar-header px-3"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "logo_block"
+  "class": "logo_block pt-4 pb-5"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "logo"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
@@ -24365,7 +24368,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_3 = {
-  "class": "nav flex-column mt-4"
+  "class": "nav flex-column"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Menu");
@@ -24398,7 +24401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "nav-item text-center overflow-hidden mt-2"
+  "class": "nav-item text-center overflow-hidden my-2"
 };
 var _hoisted_2 = {
   "class": "h5"
@@ -24522,7 +24525,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "form-group mt-3 float-end"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
-  "class": "btn btn-primary"
+  "class": "btn btn-primary text-white"
 }, "Save")], -1
 /* HOISTED */
 );
@@ -24646,7 +24649,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "form-group mt-3 float-end"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
-  "class": "btn btn-primary"
+  "class": "btn btn-primary text-white"
 }, "Save")], -1
 /* HOISTED */
 );
@@ -24741,7 +24744,7 @@ var _hoisted_1 = {
   "class": "list"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Add Candy");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Candy ");
 
 var _hoisted_3 = {
   "class": "card"
@@ -24775,24 +24778,28 @@ var _hoisted_7 = {
 var _hoisted_8 = ["onClick"];
 var _hoisted_9 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_fa = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("fa");
+
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_SubHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SubHeader");
-
-  var _component_fa = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("fa");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubHeader, {
     title: "Candies"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        "class": "btn btn-primary",
+        "class": "btn btn-primary text-white",
         to: {
           name: 'candies.create'
         }
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_2];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_fa, {
+            icon: "fa-solid fa-plus",
+            size: "1x",
+            color: "white"
+          }), _hoisted_2];
         }),
         _: 1
         /* STABLE */
@@ -24994,7 +25001,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_14)]), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       type: "button",
-      "class": "btn btn-primary mx-3 float-end",
+      "class": "btn btn-primary text-white mx-3 float-end",
       onClick: function onClick($event) {
         return $setup.removeItem(item.id);
       }
@@ -25035,7 +25042,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_2__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCartShopping, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCartPlus, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faPenToSquare, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faTrash);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_2__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCartShopping, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faPlus, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faCartPlus, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faPenToSquare, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faTrash);
 
 
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_components_Layouts_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -25585,6 +25592,9 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
 router.beforeEach(function (to, from, next) {
   // document.title = `${to.meta.title} - ${process.env.MIX_APP_NAME}`;
   next();
+  var candyMenuActive = ['candies.index', 'candies.add', 'candies.edit']; // console.log(to);
+  // if(candyMenuActive.includes(to.name)){
+  // }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 

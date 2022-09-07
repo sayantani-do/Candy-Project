@@ -1,14 +1,14 @@
 <template>
     <nav id="sidebar">
-        <div class="sidebar-header mt-4 mb-3">
-            <div class="logo_block">
+        <div class="sidebar-header px-3">
+            <div class="logo_block pt-4 pb-5">
                 <div class="logo">
                   <img src="https://cdn.clipartsfree.net/vector/medium/17906-candy-icon-art-design.png" />
                 </div>
             </div>
         </div>
 
-        <ul class="nav flex-column mt-4">
+        <ul class="nav flex-column">
             <Menu v-for="menu in sideMenus" :key="menu.id" :menu="menu" />
         </ul>
         <!-- <ul class="list-unstyled components mt-5">

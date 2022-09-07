@@ -10925,8 +10925,16 @@ textarea.form-control-lg {
   width: 100%;
 }
 
+.logo_block {
+  border-bottom: 1px solid rgba(63, 63, 63, 0.3);
+}
+
 .header-nav {
   z-index: 99999;
+}
+
+.btn-outline-primary:hover {
+  color: white !important;
 }
 
 .fa_icon {
