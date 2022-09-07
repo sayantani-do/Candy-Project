@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="card mb-2">
+        <div class="card mb-2" v-if="items.length > 0">
             <div class="card-body d-flex justify-content-between">
                 <div class="card-text">
                     <h5 class="font-weight-bold">TOTAL: </h5>

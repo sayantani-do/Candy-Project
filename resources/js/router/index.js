@@ -5,6 +5,7 @@ import CandyCreate from '../pages/Candy/Create';
 import CandyEdit from '../pages/Candy/Edit';
 import Welcome from '../components/Layouts/Welcome.vue';
 import CartIndex from '../pages/Cart/Index';
+import store from '../store';
 
 
 const routes = [
@@ -43,14 +44,22 @@ var router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-    // document.title = `${to.meta.title} - ${process.env.MIX_APP_NAME}`;
+
+    const menuActive = {
+        'candies': ['candies.index', 'candies.create', 'candies.edit']
+    }
+    if(menuActive.candies.includes(to.name)){
+        // store.state.menuActive.candies = true;
+        var obj = { 'name': 'candies', value: true }
+        store.dispatch('set_menu_active', obj);
+    } else {
+        // store.state.menuActive.candies = false;
+        var obj = { 'name': 'candies', value: false }
+        store.dispatch('set_menu_active', obj)
+    }
+
     next();
-    const candyMenuActive = ['candies.index', 'candies.add', 'candies.edit'];
-    // console.log(to);
 
-    // if(candyMenuActive.includes(to.name)){
-
-    // }
 });
 
 export default router

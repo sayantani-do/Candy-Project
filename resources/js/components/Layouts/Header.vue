@@ -4,6 +4,7 @@
             <router-link :to="{name: 'cart.index'}" title="My Cart" class="text-decoration-none d-table-cell align-middle">
                 <fa icon="fa-solid fa-cart-shopping" size="2x" color="white" />
             </router-link>
+            {{$store.state.candyMenuActive}}
         </div>
     </div>
 </template>

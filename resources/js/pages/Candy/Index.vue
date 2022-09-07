@@ -20,6 +20,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr v-if="candies.length == 0">
+                            <td colspan="6" class="text-center text-secondary pt-3 border-0">No candies in here</td>
+                        </tr>
                         <tr v-for="(candy, i) in candies" :key="i+1">
                             <th scope="row">{{i+1}}</th>
                             <td>{{candy.name}}</td>
@@ -33,7 +36,7 @@
                                 <router-link :to="{ name: 'candies.edit', params: { id: candy.id } }" title="Edit" class="mx-1 fa_icon" >
                                     <fa icon="fa-solid fa-pen-to-square" size="2x" :color="common.info" />
                                 </router-link>
-                                <span v-if="candy.in_cart == 0" title="Delete" @click="deleteCandy(candy.id)" class="fa_icon" >
+                                <span title="Delete" @click="deleteCandy(candy.id)" class="fa_icon" >
                                     <fa icon="fa-solid fa-trash" size="2x" :color="common.info" />
                                 </span>
 
@@ -67,7 +70,7 @@
             const { items, getItems, addCart, processing } = useCart();
 
             onMounted(getCandies);
-            
+
             const addToCart = async(id) => {
                 var data = {
                     'candy_id': id,

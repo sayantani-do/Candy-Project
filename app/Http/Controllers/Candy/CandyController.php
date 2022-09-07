@@ -106,6 +106,8 @@ class CandyController extends Controller
     public function destroy(Candy $candy)
     {
         try {
+            $cart_item = Cart::where('candy_id', $candy->id)->first();
+            if(@$cart_item) $cart_item->delete();
             $candy->delete();
             $response['status'] = 'success';
             $response['message'] = 'Candy deleted succesfully.';
