@@ -19,7 +19,7 @@ class CandyFactory extends Factory
             'name' => $name,
             'sku' => $sku,
             'price' => $this->faker->numerify('##.##'),
-            'details' => $this->faker->text(30),
+            'details' => $this->faker->text(50),
         ];
     }
 }

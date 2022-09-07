@@ -28,7 +28,8 @@
                             <td>{{candy.name}}</td>
                             <td>{{candy.sku}}</td>
                             <td>${{candy.price}}</td>
-                            <td>{{candy.details.substring(0,27)+'...'}}</td>
+                            <td>
+                                {{ candy.details.length <= 30 ? candy.details : candy.details.substring(0,27)+'...' }}</td>
                             <td>
                                 <span v-if="candy.in_cart == 0" title="Add To Cart" @click="addToCart(candy.id)" class="fa_icon" >
                                     <fa icon="fa-solid fa-cart-plus" size="2x" :color="common.info" />
