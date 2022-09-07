@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CandyRequest;
 use App\Http\Resources\CandyResource;
 use App\Models\Candy;
+use App\Models\Cart;
 use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
