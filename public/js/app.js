@@ -24326,9 +24326,7 @@ function render(_ctx, _cache) {
 
   }, 8
   /* PROPS */
-  , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.candyMenuActive), 1
-  /* TEXT */
-  )])]);
+  , ["to"])])]);
 }
 
 /***/ }),
